@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Laravel Forum') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -120,7 +120,9 @@
                             <ul class="list-group">
                                 @foreach ($channels as $channel)
                                     <li class="list-group-item">
-                                        {{ $channel->name }}
+                                        <a href="{{ route('discussions.index') }}?channel={{ $channel->slug }}" class="">
+                                            {{ $channel->name }}
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>

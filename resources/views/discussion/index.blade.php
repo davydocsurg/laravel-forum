@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 
   @foreach ($discussions as $discussion)
-    <div class="card">
+    <div class="card mb-4">
       @include('partials.discussion-header')
 
       <div class="card-body">
@@ -12,11 +12,11 @@
           </strong>
       </div>
 
-      <div class="card-footer">
-        {{-- {{ $posts->appends(['search' =>request()->query('search')])->links() }} --}}
-        {{ $discussions->links() }}
-      </div>
     </div>
-  @endforeach
+    @endforeach
+          <div class="card-footer">
+            {{-- {{ $posts->appends(['search' =>request()->query('search')])->links() }} --}}
+            {{ $discussions->appends(['channel' => request()->query('channel')])->links() }}
+          </div>
 
 @endsection

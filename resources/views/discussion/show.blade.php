@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 
@@ -11,8 +11,6 @@
                 <h4 class="">{{ $discussion->title }}</h4>
                 <hr>
                 {!! $discussion->content !!}
-
-
             </div>
             <div class="card-footer">
                 @if ($discussion->bestReply)
@@ -45,12 +43,18 @@
                     <div class="float-right">
                         @auth
                             @if (auth()->user()->id === $discussion->user_id)
+
                                 <form
+                                    {{-- id="best-reply-form-form" --}}
                                     action="{{ route('discussions.best-reply', ['discussion' => $discussion->slug, 'reply' => $reply->id]) }}"
-                                    method="POST">
+                                    method="POST"
+                                    style="display: none;">
                                     {{-- @method('PUT') --}}
                                     @csrf
-                                    <button class="btn btn-secondary btn-sm" type="submit">Mark as best Reply <i
+                                    <button class="btn btn-secondary btn-sm" type="submit"
+                                    {{-- onclick="event.preventDefault();
+                                    document.getElementById('best-reply-form-form').submit();" --}}
+                                    >Mark as best Reply <i
                                             class="fas fa-reply"></i></button>
                                 </form>
                             @endif

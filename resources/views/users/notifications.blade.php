@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 
     <div class="card bg-warning">
-        <div class="card-header">{{ __('Notifications') }}
-
+        <div class="card-header">
+          <b>Notifications</b>
+          <i class="fas fa-bell text-white"></i>
         </div>
 
         <div class="card-body">
